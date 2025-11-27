@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 // in the url or external routing in the chrome prefix('admin') admin/register
 // in the internal routing route("admin.login")
-Route::middleware('guest')->prefix('admin')->as('admin.')->group(function () {
+// this middle guest must be accessible only when user is a guest 
+Route::middleware('guest:admin')->prefix('admin')->as('admin.')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 

@@ -1,5 +1,6 @@
     <?php
 
+    use App\Http\Middleware\RedirectIfAuthenticated;
     use Illuminate\Foundation\Application;
     use Illuminate\Foundation\Configuration\Exceptions;
     use Illuminate\Foundation\Configuration\Middleware;
@@ -14,7 +15,10 @@
             health: '/up',
         )
         ->withMiddleware(function (Middleware $middleware): void {
-            //
+            $middleware->alias([
+                'guest' => RedirectIfAuthenticated::class,
+                // به صورت دستی میلدور گست رو اورد
+            ]);
         })
         ->withExceptions(function (Exceptions $exceptions): void {
             //
