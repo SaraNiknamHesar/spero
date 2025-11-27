@@ -1,5 +1,6 @@
     <?php
 
+    use App\Http\Middleware\Authenticate;
     use App\Http\Middleware\RedirectIfAuthenticated;
     use Illuminate\Foundation\Application;
     use Illuminate\Foundation\Configuration\Exceptions;
@@ -16,6 +17,9 @@
         )
         ->withMiddleware(function (Middleware $middleware): void {
             $middleware->alias([
+                // 'auth' => Illuminate\Auth\Middleware\Authenticate::class,
+                //custom middleware
+                'auth' => Authenticate::class,
                 'guest' => RedirectIfAuthenticated::class,
                 // به صورت دستی میلدور گست رو اورد
             ]);
