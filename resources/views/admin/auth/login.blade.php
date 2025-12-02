@@ -1,70 +1,12 @@
-{{-- <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-    <center>
-        <h1>Admin Login</h1>
-    </center>
-    <form method="POST" action="{{ route('admin.login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox"
-                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('admin.password.request'))
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                href="{{ route('admin.password.request') }}">
-                {{ __('Forgot your password?') }}
-            </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout> --}}
-
 <!doctype html>
-<!--
-* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
-* @version 1.3.0
-* @link https://tabler.io
-* Copyright 2018-2025 The Tabler Authors
-* Copyright 2018-2025 codecalm.net Paweł Kuna
-* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
--->
+
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sign in - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <title>Sign in</title>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="{{ asset('assets/admin/dist/css/tabler.css') }}" rel="stylesheet" />
     <!-- END GLOBAL MANDATORY STYLES -->
@@ -98,10 +40,15 @@
             <div class="card card-md">
                 <div class="card-body">
                     <h2 class="h2 text-center mb-4">Login to your account</h2>
-                    <form action="./" method="get" autocomplete="off" novalidate>
+                    <x-auth-session-status class="mb-4" :status="session('status')" />
+                    <form action="{{ route('admin.login') }}" method="post" autocomplete="off" novalidate>
+                        @csrf
+
                         <div class="mb-3">
                             <label class="form-label">Email address</label>
-                            <input type="email" class="form-control" placeholder="your@email.com" autocomplete="off" />
+                            <input type="email" name="email" :value="__('Email')" class="form-control"
+                                placeholder="your@email.com" autocomplete="off" />
+                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
                         <div class="mb-2">
                             <label class="form-label">
@@ -111,7 +58,7 @@
                                 </span>
                             </label>
                             <div class="input-group input-group-flat">
-                                <input type="password" class="form-control" placeholder="Your password"
+                                <input type="password" name="password" class="form-control" placeholder="Your password"
                                     autocomplete="off" />
                                 <span class="input-group-text">
                                     <a href="#" class="link-secondary" title="Show password"
@@ -124,14 +71,32 @@
                                                 d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
                                         </svg></a>
                                 </span>
+
                             </div>
                         </div>
+
+
+
+
+
+
+
+
+
+
+
                         <div class="mb-2">
                             <label class="form-check">
-                                <input type="checkbox" class="form-check-input" />
+                                <input type="checkbox" class="form-check-input" name="remember" />
                                 <span class="form-check-label">Remember me on this device</span>
                             </label>
                         </div>
+
+
+
+
+
+
                         <div class="form-footer">
                             <button type="submit" class="btn btn-primary w-100">Sign in</button>
                         </div>
