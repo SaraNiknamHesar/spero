@@ -13,7 +13,8 @@ Route::get('/dashboard', function () {
 // وقتی از بریز استفاده می کنیم این میاد وریفیکشن رو انجام میده و میبره مارو به داشبورد بعد از لاگین
 
 Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard.index');
+    // return view('admin.dashboard.index');
+    return view('admin.layouts.app');
 })->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
 // برای ادمین 
 
