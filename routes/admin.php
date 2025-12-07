@@ -19,11 +19,6 @@ use Illuminate\Support\Facades\Route;
 // in the internal routing route("admin.login")
 // this middle guest must be accessible only when user is a guest 
 Route::middleware('guest:admin')->prefix('admin')->as('admin.')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-        ->name('register');
-
-    Route::post('register', [RegisteredUserController::class, 'store']);
-
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
@@ -64,3 +59,8 @@ Route::middleware('auth:admin')->prefix('admin')->as('admin.')->group(function (
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard.index');
+    // return view('admin.layouts.app');
+})->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+// برای ادمین 
