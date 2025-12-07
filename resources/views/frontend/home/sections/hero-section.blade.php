@@ -199,7 +199,7 @@
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-12">
                                 <div class="banner-img style-4 mt-30">
-                                    <img src="assets/imgs/banner/banner-14.png" alt="" />
+                                    <img src="assets/frontend/dist/imgs/banner/banner-14.png" alt="" />
                                     <div class="banner-text">
                                         <h4 class="mb-30">Hi-Res Audio Headphones</h4>
                                         <a href="shop-grid-right.html" class="btn btn-xs mb-50">Shop Now <i
@@ -209,7 +209,7 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-12">
                                 <div class="banner-img style-5 mt-5 mt-md-30">
-                                    <img src="assets/imgs/banner/banner-15.png" alt="" />
+                                    <img src="assets/frontend/dist/imgs/banner/banner-15.png" alt="" />
                                     <div class="banner-text">
                                         <h5 class="mb-20">Men’s Leather <br> Waterproof Boots</h5>
                                         <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i
