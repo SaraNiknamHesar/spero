@@ -27,8 +27,22 @@ class ProfileController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->save();
-  AlertService::updated();
+        AlertService::updated();
         return redirect()->back();
       
+    }
+    public function passwordUpdate(Request $request):RedirectResponse
+    {
+        $request->validate([
+            'current_password' => ['required','string','current_password'],
+            'password' => ['required','string','min:8','confirmed'],
+            //
+        ]); 
+
+        $user = auth('web')->user();
+        $user->password = bcrypt($request->password);
+        $user->save();
+        AlertService::updated();
+        return redirect()->back(); 
     }
 }
