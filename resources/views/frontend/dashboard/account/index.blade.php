@@ -48,18 +48,18 @@
 
                         <div class="form-group col-md-12">
                             <label>Current Password <span class="required">*</span></label>
-                            <input required="" class="form-control" name="current_password" type="password" />
+                            <input  class="form-control" name="current_password" type="password" />
                             <x-input-error :messages="$errors->get('current_password')" class="mt-2" />
                         </div>
                         <div class="form-group col-md-12">
                             <label>New Password <span class="required">*</span></label>
-                            <input required="" class="form-control" name="password" type="password" />
+                            <input  class="form-control" name="password" type="password" />
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
                         </div>
                         <div class="form-group col-md-12">
                             <label>Confirm Password <span class="required">*</span></label>
-                            <input required="" class="form-control" name="password_confirmation" type="password" />
+                            <input  class="form-control" name="password_confirmation" type="password" />
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
                         </div>

@@ -42,8 +42,7 @@ class ProfileController extends Controller
         $request->validate([
             'current_password' => ['required','string','current_password'],
             'password' => ['required','string','min:8','confirmed'],
-            'avatar' => ['nullable','image','mimes:jpeg,png,jpg','max:2048'],
-            //
+           
         ]); 
 
         $user = auth('web')->user();
