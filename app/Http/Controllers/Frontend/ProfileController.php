@@ -22,11 +22,14 @@ class ProfileController extends Controller
         $request->validate([
             'name' => ['required','string','max:50'],
             'email' => ['required','email','unique:users,email,'.auth('web')->user()->id],
+            'avatar' => ['nullable','image','max:2048'],
             //
         ]); 
         $user = auth('web')->user();
-        $filepath=$this->uploadFile($request->file('avatar'),$user->avatar);
+          if ($request->hasFile('avatar')) {
+          $filepath=$this->uploadFile($request->file('avatar'),$user->avatar);
         $filepath ? $user->avatar = $filepath: null;
+        }
         $user->name = $request->input('name');
         $user->email = $request->input('email');    
         $user->save();

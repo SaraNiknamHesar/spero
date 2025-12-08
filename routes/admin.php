@@ -56,10 +56,13 @@ Route::middleware('auth:admin')->prefix('admin')->as('admin.')->group(function (
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
-
-   Route::get('/profile',[ProfileController::class,'index'])->name('profile.index');
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+       Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+// Routes for profiles
+   Route::get('/profile',[ProfileController::class,'index'])->name('profile.index');
+   Route::put('/profile',[ProfileController::class,'profileUpdate'])->name('profile.update');
+   // End routes for profiles
+ 
 });
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard.index');
