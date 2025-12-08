@@ -7,16 +7,11 @@
             </div>
             <div class="card-body p-0">
                 <p>you can edit your account details</p>
-                <form method="post" action="{{ route('profile.update') }}">
+                <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row mt-30">
-                        {{-- پلاگین نشون دادن عکس ها --}}
-                        <div id="image-preview">
-                            <label for="image-upload" id="image-label">Choose File</label>
-                            <input type="file" name="image" id="image-upload" />
-                        </div>
-                        {{-- پلاگین نشون دادن عکس ها پایان --}}
+                     <x-input-image id="image-preview" name="avatar" :image="auth('web')->user()->avatar"/>
                         <div class="form-group col-md-12">
                             <label> Name <span class="required">*</span></label>
                             <input required="" class="form-control" name="name" type="text"

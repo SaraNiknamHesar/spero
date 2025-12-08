@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Services\AlertService;
+use App\Traits\FileUploadTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 
 class ProfileController extends Controller
 {
+    use FileUploadTrait;
     public function index()
     {
         return view('frontend.dashboard.account.index');
@@ -22,10 +24,11 @@ class ProfileController extends Controller
             'email' => ['required','email','unique:users,email,'.auth('web')->user()->id],
             //
         ]); 
-
+        $filepath=$this->uploadFile($request->file('avatar'));
         $user = auth('web')->user();
+        $filepath ? $user->avatar = $filepath: null;
         $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        $user->email = $request->input('email');    
         $user->save();
         AlertService::updated();
         return redirect()->back();
@@ -36,6 +39,7 @@ class ProfileController extends Controller
         $request->validate([
             'current_password' => ['required','string','current_password'],
             'password' => ['required','string','min:8','confirmed'],
+            'avatar' => ['nullable','image','mimes:jpeg,png,jpg','max:2048'],
             //
         ]); 
 
