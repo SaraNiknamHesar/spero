@@ -1,6 +1,6 @@
 <?php
 use App\Http\Controllers\Frontend\UserDashboardController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,16 +10,12 @@ Route::get('/', function () {
 
 Route::group(['middleware'=>['auth','verified']],function(){
     Route::get('/dashboard',[UserDashboardController::class,'index'])->name('dashboard');
+    // profile routes
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    
 });
 
 
 
-
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> e968e4f9a45eacd397f7325423efa851a4a15952
 
 require __DIR__ . '/auth.php';
