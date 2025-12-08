@@ -7,16 +7,19 @@
             </div>
             <div class="card-body p-0">
                 <p>you can edit your account details</p>
-                <form method="post" name="enq">
+                <form method="post" action="{{ route('profile.update') }}">
+                    @csrf
                     <div class="row mt-30">
                         <div class="form-group col-md-12">
                             <label>  Name <span class="required">*</span></label>
-                            <input required="" class="form-control" name="name" type="text" />
+                            <input required="" class="form-control" name="name" type="text" value="{{ auth('web')->user()->name }}"/>
+                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
                     
                         <div class="form-group col-md-12">
                             <label>Email Address <span class="required">*</span></label>
-                            <input required="" class="form-control" name="email" type="email" />
+                            <input required="" class="form-control" name="email" type="email" value="{{ auth('web')->user()->email }}"/>
+                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
     
                         <div class="col-md-12">
