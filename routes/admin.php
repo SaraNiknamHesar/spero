@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 // use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // in the url or external routing in the chrome prefix('admin') admin/register
@@ -56,6 +57,7 @@ Route::middleware('auth:admin')->prefix('admin')->as('admin.')->group(function (
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
+   Route::get('/profile',[ProfileController::class,'index'])->name('profile.index');
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
