@@ -24,8 +24,8 @@ class ProfileController extends Controller
             'email' => ['required','email','unique:users,email,'.auth('web')->user()->id],
             //
         ]); 
-        $filepath=$this->uploadFile($request->file('avatar'));
         $user = auth('web')->user();
+        $filepath=$this->uploadFile($request->file('avatar'),$user->avatar);
         $filepath ? $user->avatar = $filepath: null;
         $user->name = $request->input('name');
         $user->email = $request->input('email');    
