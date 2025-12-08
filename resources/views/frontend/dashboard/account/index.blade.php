@@ -11,6 +11,12 @@
                     @csrf
                     @method('PUT')
                     <div class="row mt-30">
+                        {{-- پلاگین نشون دادن عکس ها --}}
+                        <div id="image-preview">
+                            <label for="image-upload" id="image-label">Choose File</label>
+                            <input type="file" name="image" id="image-upload" />
+                        </div>
+                        {{-- پلاگین نشون دادن عکس ها پایان --}}
                         <div class="form-group col-md-12">
                             <label> Name <span class="required">*</span></label>
                             <input required="" class="form-control" name="name" type="text"
@@ -44,6 +50,7 @@
                     @csrf
                     @method('PUT')
                     <div class="row mt-30">
+
                         <div class="form-group col-md-12">
                             <label>Current Password <span class="required">*</span></label>
                             <input required="" class="form-control" name="current_password" type="password" />
@@ -73,3 +80,17 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.uploadPreview({
+                input_field: "#image-upload", // Default: .image-upload
+                preview_box: "#image-preview", // Default: .image-preview
+                label_field: "#image-label", // Default: .image-label
+                label_default: "Choose File", // Default: Choose File
+                label_selected: "Change File", // Default: Change File
+                no_label: false // Default: false
+            });
+        });
+    </script>
+@endpush
