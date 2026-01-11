@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Services\AlertService;
-use App\Traits\FileUploadTrait;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    use FileUploadTrait;
+
     function index(){
         return view('admin.profile.index');
     }
